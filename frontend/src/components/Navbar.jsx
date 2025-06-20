@@ -9,13 +9,8 @@ const Navbar = () => {
   const dropdownRef = useRef(null);
   const navigate = useNavigate();
 
-  const {
-    setShowSearch,
-    getCartCount,
-    token,
-    setToken,
-    setCartItems,
-  } = useContext(ShopContext);
+  const { setShowSearch, getCartCount, token, setToken, setCartItems } =
+    useContext(ShopContext);
 
   const logout = () => {
     navigate("/login");
@@ -44,10 +39,18 @@ const Navbar = () => {
         </Link>
 
         <ul className="hidden sm:flex gap-6 text-sm font-semibold">
-          <NavLink to="/" className="hover:text-black transition">HOME</NavLink>
-          <NavLink to="/collection" className="hover:text-black transition">CAKE-COLLECTION</NavLink>
-          <NavLink to="/about" className="hover:text-black transition">ABOUT</NavLink>
-          <NavLink to="/contact" className="hover:text-black transition">CONTACT</NavLink>
+          <NavLink to="/" className="hover:text-black transition">
+            HOME
+          </NavLink>
+          <NavLink to="/collection" className="hover:text-black transition">
+            CAKE-COLLECTION
+          </NavLink>
+          <NavLink to="/about" className="hover:text-black transition">
+            ABOUT
+          </NavLink>
+          <NavLink to="/contact" className="hover:text-black transition">
+            CONTACT
+          </NavLink>
         </ul>
 
         <div className="flex items-center gap-5">
@@ -73,16 +76,41 @@ const Navbar = () => {
             {token && dropdownOpen && (
               <div className="absolute right-0 mt-3 bg-white text-gray-700 rounded shadow-md z-50 w-40">
                 <div className="flex flex-col gap-2 py-3 px-5">
-                  <p onClick={() => { navigate('/'); setDropdownOpen(false); }} className="cursor-pointer hover:text-black">My Profile</p>
-                  <p onClick={() => { navigate('/orders'); setDropdownOpen(false); }} className="cursor-pointer hover:text-black">Orders</p>
-                  <p onClick={logout} className="cursor-pointer hover:text-black">Logout</p>
+                  <p
+                    onClick={() => {
+                      navigate("/");
+                      setDropdownOpen(false);
+                    }}
+                    className="cursor-pointer hover:text-black"
+                  >
+                    My Profile
+                  </p>
+                  <p
+                    onClick={() => {
+                      navigate("/orders");
+                      setDropdownOpen(false);
+                    }}
+                    className="cursor-pointer hover:text-black"
+                  >
+                    Orders
+                  </p>
+                  <p
+                    onClick={logout}
+                    className="cursor-pointer hover:text-black"
+                  >
+                    Logout
+                  </p>
                 </div>
               </div>
             )}
           </div>
 
           <Link to="/cart" className="relative">
-            <img src={assets.cart_icon} className="w-5 min-w-5 filter invert" alt="cart" />
+            <img
+              src={assets.cart_icon}
+              className="w-5 min-w-5 filter invert"
+              alt="cart"
+            />
             <p className="absolute -right-2 -bottom-2 w-4 h-4 bg-white text-black rounded-full text-[10px] flex items-center justify-center font-bold">
               {getCartCount()}
             </p>
@@ -98,16 +126,80 @@ const Navbar = () => {
       </div>
 
       {/* Mobile Sidebar */}
-      <div className={`absolute top-0 right-0 h-full z-40 bg-white text-black transition-all duration-300 ${visible ? "w-64 px-4 py-6 shadow-lg" : "w-0 overflow-hidden"}`}>
+      <div
+        className={`fixed top-0 right-0 h-screen z-50 text-white transition-all duration-300 ${
+          visible
+            ? "w-64 px-4 py-6 shadow-lg bg-gradient-to-br from-yellow-400 via-yellow-300 to-amber-500"
+            : "w-0 overflow-hidden"
+        }`}
+      >
         <div className="flex flex-col text-sm font-semibold">
-          <div onClick={() => setVisible(false)} className="flex items-center gap-4 cursor-pointer mb-6">
-            <img className="h-4 rotate-180" src={assets.dropdown_icon} alt="back" />
+          <div
+            onClick={() => setVisible(false)}
+            className="flex items-center gap-4 cursor-pointer mb-6"
+          >
+            <img
+              className="h-4 rotate-180 filter invert"
+              src={assets.dropdown_icon}
+              alt="back"
+            />
             <p>Back</p>
           </div>
-          <NavLink onClick={() => setVisible(false)} className="py-3 border-b" to="/">HOME</NavLink>
-          <NavLink onClick={() => setVisible(false)} className="py-3 border-b" to="/collection">CAKE-COLLECTION</NavLink>
-          <NavLink onClick={() => setVisible(false)} className="py-3 border-b" to="/about">ABOUT</NavLink>
-          <NavLink onClick={() => setVisible(false)} className="py-3 border-b" to="/contact">CONTACT</NavLink>
+          <NavLink
+            onClick={() => setVisible(false)}
+            to="/"
+            className={({ isActive }) =>
+              `py-3 px-4 border-b border-white w-full block ${
+                isActive
+                  ? "bg-black text-white"
+                  : "hover:bg-black hover:text-white"
+              }`
+            }
+          >
+            HOME
+          </NavLink>
+
+          <NavLink
+            onClick={() => setVisible(false)}
+            to="/collection"
+            className={({ isActive }) =>
+              `py-3 px-4 border-b border-white w-full block ${
+                isActive
+                  ? "bg-black text-white"
+                  : "hover:bg-black hover:text-white"
+              }`
+            }
+          >
+            CAKE-COLLECTION
+          </NavLink>
+
+          <NavLink
+            onClick={() => setVisible(false)}
+            to="/about"
+            className={({ isActive }) =>
+              `py-3 px-4 border-b border-white w-full block ${
+                isActive
+                  ? "bg-black text-white"
+                  : "hover:bg-black hover:text-white"
+              }`
+            }
+          >
+            ABOUT
+          </NavLink>
+
+          <NavLink
+            onClick={() => setVisible(false)}
+            to="/contact"
+            className={({ isActive }) =>
+              `py-3 px-4 border-b border-white w-full block ${
+                isActive
+                  ? "bg-black text-white"
+                  : "hover:bg-black hover:text-white"
+              }`
+            }
+          >
+            CONTACT
+          </NavLink>
         </div>
       </div>
     </div>
