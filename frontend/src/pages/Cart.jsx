@@ -28,78 +28,82 @@ const Cart = () => {
     }
   }, [cartItems, products]);
 
+  // Just replace the classes inside your return JSX as follows:
   return (
-    <div className="border-t pt-14">
-      <div className="text-2xl mb-3">
+    <div className="border-t pt-14 px-6 sm:px-16 md:px-24 bg-gradient-to-br from-yellow-100 via-white to-amber-100 min-h-screen">
+      <div className="text-3xl sm:text-4xl mb-6 text-center text-amber-700 font-semibold">
         <Title text1={"YOUR"} text2={"CART"} />
       </div>
-
-      <div className="">
+  
+      <div className="space-y-6">
         {cartData.map((item, index) => {
           const productData = products.find(
             (product) => product._id === item._id
           );
-
+  
           return (
             <div
               key={index}
-              className="py-4 border-t border-b text-gray-700 grid grid-cols-[4fr_0.5fr_0.5fr] sm:grid-cols-[4fr_2fr_0.5fr] items-center gap-4"
+              className="bg-white rounded-lg shadow-sm px-6 py-5 border border-amber-300 flex flex-col sm:flex-row sm:items-center justify-between gap-6"
             >
-              <div className="flex items-start gap-6">
+              <div className="flex items-start gap-5 sm:flex-1">
                 <img
-                  className="w-16 sm:w-20"
+                  className="w-16 sm:w-24 rounded shadow-md border border-amber-200"
                   src={productData.image[0]}
                   alt=""
                 />
                 <div>
-                  <p className="text-xs sm:text-lg font-medium ">
+                  <p className="text-base font-semibold text-amber-800">
                     {productData.name}
                   </p>
-                  <div className="flex items-center gap-5 mt-2">
-                    <p>
+                  <div className="flex items-center gap-4 mt-2 text-sm text-amber-600">
+                    <span>
                       {currency}
                       {productData.price}
-                    </p>
-                    <p className="px-2 sm:px-3 sm:py-1 border bg-slate-50">
+                    </span>
+                    <span className="px-2 py-1 rounded bg-yellow-100 text-xs uppercase text-amber-700 font-semibold">
                       {item.size}
-                    </p>
+                    </span>
                   </div>
                 </div>
               </div>
-              <input
-                onChange={(e) =>
-                  e.target.value === "" || e.target.value === "0"
-                    ? null
-                    : updateQuantity(
-                        item._id,
-                        item.size,
-                        Number(e.target.value)
-                      )
-                }
-                className="border max-w-10 sm:max-w-20 px-1 sm:px-2 py-1 "
-                type="number"
-                min={1}
-                defaultValue={item.quantity}
-              />
-
-              <img
-                onClick={() => updateQuantity(item._id, item.size, 0)}
-                className="w-4 mr-4 sm:w-5 cursor-pointer"
-                src={assets.bin_icon}
-                alt=""
-              />
+  
+              <div className="flex items-center gap-4">
+                <input
+                  onChange={(e) =>
+                    e.target.value === "" || e.target.value === "0"
+                      ? null
+                      : updateQuantity(
+                          item._id,
+                          item.size,
+                          Number(e.target.value)
+                        )
+                  }
+                  className="border border-amber-300 text-center text-sm rounded-md px-3 py-1 w-16 focus:outline-none focus:ring-2 focus:ring-amber-300"
+                  type="number"
+                  min={1}
+                  defaultValue={item.quantity}
+                />
+                <img
+                  onClick={() => updateQuantity(item._id, item.size, 0)}
+                  className="w-5 cursor-pointer hover:scale-110 transition-transform"
+                  src={assets.bin_icon}
+                  alt="Remove"
+                />
+              </div>
             </div>
           );
         })}
       </div>
-
-      <div className="flex justify-end my-20">
-        <div className="w-full sm:w-[450px]">
+  
+      {/* Cart total & checkout */}
+      <div className="flex justify-end my-16">
+        <div className="w-full sm:w-[450px] bg-white rounded-lg p-6 shadow-md border border-amber-300">
           <CartTotal />
-          <div className="w-full text-end">
+          <div className="text-end">
             <button
               onClick={() => navigate("/place-order")}
-              className="bg-black text-white text-sm my-8 px-8 py-3"
+              className="mt-6 bg-gradient-to-r from-yellow-400 to-amber-400 hover:from-yellow-500 hover:to-amber-500 text-white text-sm tracking-wide px-6 py-3 rounded-md shadow-md transition"
             >
               PROCEED TO CHECKOUT
             </button>
@@ -108,6 +112,8 @@ const Cart = () => {
       </div>
     </div>
   );
+  
+
 };
 
 export default Cart;

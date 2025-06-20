@@ -5,16 +5,22 @@ import BestSeller from '../components/BestSeller'
 import { OurPolicy } from '../components/OurPolicy'
 import NewsLetterBox from '../components/NewsLetterBox'
 
-
 const Home = () => {
   return (
     <div>
-        <Hero/>
-        <LatestCollection/>
-        <BestSeller/>
-        <OurPolicy/>
-        <NewsLetterBox/>
-  
+      <div className="bg-white">
+        <Hero />
+      </div>
+      <div className="bg-gray-50">
+        <LatestCollection />
+      </div>
+      <div className="bg-white">
+        <BestSeller />
+      </div>
+      <div className="bg-gray-50">
+        <OurPolicy />
+      </div>
+      <NewsLetterBox />
     </div>
   )
 }

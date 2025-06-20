@@ -40,8 +40,7 @@ const PlaceOrder = () => {
       handler: async (response) => {
         console.log(response)
         try {
-          
-          const { data } = await axios.post(backendUrl + '/api/order/verifyRazorpay',response,{headers:{token}})
+          const { data } = await axios.post(backendUrl + '/api/order/verifyRazorpay', response, { headers: { token } })
           if (data.success) {
             navigate('/orders')
             setCartItems({})
@@ -49,7 +48,6 @@ const PlaceOrder = () => {
         } catch (error) {
           console.log(error);
           toast.error(error)
-          
         }
       }
     }
@@ -128,60 +126,174 @@ const PlaceOrder = () => {
 
 
   return (
-    <form onSubmit={onSubmitHandler} className="flex flex-col sm:flex-row justify-between gap-4 pt-5 sm:pt-14 min-h-[80vh] border-t">
+    <form
+      onSubmit={onSubmitHandler}
+      className="flex flex-col sm:flex-row justify-between gap-4 pt-5 sm:pt-14 min-h-[80vh] border-t px-4 sm:px-10 bg-gradient-to-br from-[#fff8e7] via-[#ffecd2] to-[#fbd786]"
+    >
       {/* Left Side */}
       <div className="flex flex-col gap-4 w-full sm:max-w-[480px]">
         <div className="text-xl sm:text-2xl my-3">
           <Title text1={"DELIVERY"} text2={"INFORMATION"} />
         </div>
+  
         <div className="flex gap-3">
-          <input required onChange={onChangeHandler} name="firstName" value={formData.firstName} className="border border-gray-300 rounded py-1.5 px-3.5 w-full" type="text" placeholder="First name"/>
-          <input required onChange={onChangeHandler} name="lastName" value={formData.lastName} className="border border-gray-300 rounded py-1.5 px-3.5 w-full"  type="text" placeholder="Last name" />
+          <input
+            required
+            onChange={onChangeHandler}
+            name="firstName"
+            value={formData.firstName}
+            className="bg-white bg-opacity-80 border border-yellow-300 rounded-full py-2 px-4 w-full shadow-inner focus:ring-2 focus:ring-yellow-400"
+            type="text"
+            placeholder="First name"
+          />
+          <input
+            required
+            onChange={onChangeHandler}
+            name="lastName"
+            value={formData.lastName}
+            className="bg-white bg-opacity-80 border border-yellow-300 rounded-full py-2 px-4 w-full shadow-inner focus:ring-2 focus:ring-yellow-400"
+            type="text"
+            placeholder="Last name"
+          />
         </div>
-        <input required onChange={onChangeHandler} name="email" value={formData.email} className="border border-gray-300 rounded py-1.5 px-3.5 w-full"type="email"placeholder="Email address"/>
-        <input required onChange={onChangeHandler} name="street" value={formData.street} className='border border-gray-300 rounded py-1.5 px-3.5 w-full' type="text" placeholder='Street'  />
+  
+        <input
+          required
+          onChange={onChangeHandler}
+          name="email"
+          value={formData.email}
+          className="bg-white bg-opacity-80 border border-yellow-300 rounded-full py-2 px-4 w-full shadow-inner focus:ring-2 focus:ring-yellow-400"
+          type="email"
+          placeholder="Email address"
+        />
+        <input
+          required
+          onChange={onChangeHandler}
+          name="street"
+          value={formData.street}
+          className="bg-white bg-opacity-80 border border-yellow-300 rounded-full py-2 px-4 w-full shadow-inner focus:ring-2 focus:ring-yellow-400"
+          type="text"
+          placeholder="Street"
+        />
+  
         <div className="flex gap-3">
-          <input required onChange={onChangeHandler} name="city" value={formData.city} className="border border-gray-300 rounded py-1.5 px-3.5 w-full" type="text" placeholder="City"/>
-          <input required onChange={onChangeHandler} name="state" value={formData.state} className="border border-gray-300 rounded py-1.5 px-3.5 w-full"  type="text" placeholder="State" />
+          <input
+            required
+            onChange={onChangeHandler}
+            name="city"
+            value={formData.city}
+            className="bg-white bg-opacity-80 border border-yellow-300 rounded-full py-2 px-4 w-full shadow-inner focus:ring-2 focus:ring-yellow-400"
+            type="text"
+            placeholder="City"
+          />
+          <input
+            required
+            onChange={onChangeHandler}
+            name="state"
+            value={formData.state}
+            className="bg-white bg-opacity-80 border border-yellow-300 rounded-full py-2 px-4 w-full shadow-inner focus:ring-2 focus:ring-yellow-400"
+            type="text"
+            placeholder="State"
+          />
         </div>
+  
         <div className="flex gap-3">
-          <input required onChange={onChangeHandler} name="zipcode" value={formData.zipcode} className="border border-gray-300 rounded py-1.5 px-3.5 w-full" type="number" placeholder="PIN code"/>
-          <input required onChange={onChangeHandler} name="country" value={formData.country} className="border border-gray-300 rounded py-1.5 px-3.5 w-full"  type="text" placeholder="Country Name" />
+          <input
+            required
+            onChange={onChangeHandler}
+            name="zipcode"
+            value={formData.zipcode}
+            className="bg-white bg-opacity-80 border border-yellow-300 rounded-full py-2 px-4 w-full shadow-inner focus:ring-2 focus:ring-yellow-400"
+            type="number"
+            placeholder="PIN code"
+          />
+          <input
+            required
+            onChange={onChangeHandler}
+            name="country"
+            value={formData.country}
+            className="bg-white bg-opacity-80 border border-yellow-300 rounded-full py-2 px-4 w-full shadow-inner focus:ring-2 focus:ring-yellow-400"
+            type="text"
+            placeholder="Country Name"
+          />
         </div>
-        <input onChange={onChangeHandler} name="phone" value={formData.phone} className="border border-gray-300 rounded py-1.5 px-3.5 w-full" type="number" placeholder="Phone"/>
+  
+        <input
+          onChange={onChangeHandler}
+          name="phone"
+          value={formData.phone}
+          className="bg-white bg-opacity-80 border border-yellow-300 rounded-full py-2 px-4 w-full shadow-inner focus:ring-2 focus:ring-yellow-400"
+          type="number"
+          placeholder="Phone"
+        />
       </div>
-
+  
       {/* Right section */}
-      <div className="mt-8">
-        <div className="mt-8 min-w-80">
+      <div className="mt-8 flex flex-col w-full sm:w-[480px]">
+        <div className="mt-8 min-w-80 bg-white bg-opacity-90 shadow-md rounded-xl p-5">
           <CartTotal />
         </div>
-
+  
         <div className="mt-12">
-          <Title text1={'PAYMENT'} text2={'METHOD'} />
+          <Title text1={"PAYMENT"} text2={"METHOD"} />
           {/* Payment Method */}
-          <div className="flex gap-3 flex-col lg:flex-row">
-            <div onClick={()=>setMethod('stripe')} className="flex items-center gap-3 border p-2 px-3 cursor-pointer">
-              <p className={`min-w-3.5 h-3.5 border rounded-full ${method === 'stripe' ? 'bg-green-400' : ''}`}></p>
-              <img className="h-5 mx-4" src={assets.stripe_logo} alt="" />
+          <div className="flex gap-3 flex-col lg:flex-row mt-4">
+            <div
+              onClick={() => setMethod("stripe")}
+              className="flex items-center gap-3 border border-yellow-300 bg-white bg-opacity-90 rounded-full p-2 px-4 cursor-pointer shadow-sm hover:shadow-md transition"
+            >
+              <p
+                className={`min-w-3.5 h-3.5 border border-yellow-400 rounded-full ${
+                  method === "stripe" ? "bg-yellow-400" : ""
+                }`}
+              ></p>
+              <img className="h-5 mx-2" src={assets.stripe_logo} alt="Stripe" />
             </div>
-            <div onClick={()=>setMethod('razorpay')} className="flex items-center gap-3 border p-2 px-3 cursor-pointer">
-              <p className={`min-w-3.5 h-3.5 border rounded-full ${method === 'razorpay' ? 'bg-green-400' : ''}`}></p>
-              <img className="h-5 mx-4" src={assets.razorpay_logo} alt="" />
+  
+            <div
+              onClick={() => setMethod("razorpay")}
+              className="flex items-center gap-3 border border-yellow-300 bg-white bg-opacity-90 rounded-full p-2 px-4 cursor-pointer shadow-sm hover:shadow-md transition"
+            >
+              <p
+                className={`min-w-3.5 h-3.5 border border-yellow-400 rounded-full ${
+                  method === "razorpay" ? "bg-yellow-400" : ""
+                }`}
+              ></p>
+              <img
+                className="h-5 mx-2"
+                src={assets.razorpay_logo}
+                alt="Razorpay"
+              />
             </div>
-            <div onClick={()=>setMethod('cod')} className="flex items-center gap-3 border p-2 px-3 cursor-pointer">
-              <p className={`min-w-3.5 h-3.5 border rounded-full ${method === 'cod' ? 'bg-green-400' : ''}`}></p>
-              <p className="text-gray-500 text-sm font-medium mx-4">CASH ON DELIVERY</p>
+  
+            <div
+              onClick={() => setMethod("cod")}
+              className="flex items-center gap-3 border border-yellow-300 bg-white bg-opacity-90 rounded-full p-2 px-4 cursor-pointer shadow-sm hover:shadow-md transition"
+            >
+              <p
+                className={`min-w-3.5 h-3.5 border border-yellow-400 rounded-full ${
+                  method === "cod" ? "bg-yellow-400" : ""
+                }`}
+              ></p>
+              <p className="text-sm font-medium mx-2 text-yellow-900">
+                CASH ON DELIVERY
+              </p>
             </div>
           </div>
+  
           <div className="w-full text-end mt-8">
-            <button type="submit"  className="bg-black text-white px-16 py-3 text-sm">PLACE ORDER</button>
-
+            <button
+              type="submit"
+              className="bg-gradient-to-r from-yellow-400 to-orange-300 hover:from-yellow-300 hover:to-orange-200 text-white font-semibold shadow-md hover:shadow-xl transition-all duration-300 rounded-full px-10 py-3 text-sm"
+            >
+              PLACE ORDER
+            </button>
           </div>
         </div>
       </div>
     </form>
   );
+  
 };
 
 export default PlaceOrder;
