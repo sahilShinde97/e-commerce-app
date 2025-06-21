@@ -233,6 +233,32 @@ const PlaceOrder = () => {
         <div className="mt-8 min-w-80 bg-white bg-opacity-90 shadow-md rounded-xl p-5">
           <CartTotal />
         </div>
+
+        <div className="bg-yellow-50 border border-yellow-300 rounded-lg px-6 py-4 mt-6 shadow text-center max-w-3xl mx-auto">
+  <div className="flex flex-col gap-2 items-start">
+    <div className="text-lg font-medium text-yellow-800 flex items-center gap-2">
+      <span className="text-xl">⚠️</span>
+      <span>
+        सध्या <span className="text-red-600 font-bold">Cash on Delivery</span> उपलब्ध आहे
+      </span>
+    </div>
+    <div className="text-lg font-medium text-yellow-800 flex items-center gap-2">
+      <span className="text-xl">⚠️</span>
+      <span>
+        फिलहाल केवल <span className="text-red-600 font-bold">कैश ऑन डिलीवरी</span> उपलब्ध है
+      </span>
+    </div>
+    <div className="text-lg font-medium text-yellow-800 flex items-center gap-2">
+      <span className="text-xl">⚠️</span>
+      <span>
+        Currently only <span className="text-red-600 font-bold">Cash on Delivery</span> is available
+      </span>
+    </div>
+  </div>
+</div>
+
+
+
   
         <div className="mt-12">
           <Title text1={"PAYMENT"} text2={"METHOD"} />
