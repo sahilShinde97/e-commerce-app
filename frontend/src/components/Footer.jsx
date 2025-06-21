@@ -27,7 +27,7 @@ const Footer = () => {
           <p className="text-xl font-semibold mb-4 text-amber-700">GET IN TOUCH</p>
           <ul className="flex flex-col gap-2">
             <li className="hover:text-yellow-700 transition cursor-pointer">+91-913-651-8859</li>
-            <li className="hover:text-yellow-700 transition cursor-pointer">sahilshinde9730@gmail.com</li>
+            <li className="hover:text-yellow-700 transition cursor-pointer">chinchpure4287@gmail.com</li>
           </ul>
         </div>
 
